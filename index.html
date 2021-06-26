@@ -10,16 +10,16 @@
 </head>
 <body>
   <header>
-    <h1>Header Here</h1>
+    <h1 id='fantascribe'>Fantascribe</h1>
   </header>
   <main>
     <div class="filters">
       <!-- Filter by team or position -->
-      <form>
+      <form id="filterform">
         <fieldset>
           <legend>Filter Player Notes</legend>
           <label>Team
-            <select name='team' id="team">
+            <select name='team' id="filterTeam">
               <option style="display:none"></option>
               <option value='ari'>ARI</option>
               <option value='atl'>ATL</option>
@@ -27,7 +27,7 @@
             </select>
           </label>
           <label>Position
-            <select name='position' id="position">
+            <select name='position' id="filterPosition">
               <option style="display:none"></option>
               <option value='qb'>QB</option>
               <option value='rb'>RB</option>
@@ -37,6 +37,10 @@
           </label>
           <br>
           <button type="submit">Filter</button>
+        </fieldset>
+        <fieldset>
+          <legend>Remove Notes</legend>
+          <button type = "submit" id="deleteAllNotes">Delete</button>
         </fieldset>
       </form>
     </div>

@@ -3,6 +3,8 @@
 let allNotesArr = [];
 //footholds into DOM
 let createNoteForm = document.getElementById('create-note-form');
+let filterForm = document.getElementById('filterform');
+let deleteAllNotesButton = document.getElementById('deleteAllNotes');
 //constructor functions
 
 function CreateNote(playerName, position, team, text){
@@ -24,7 +26,7 @@ function CreateNote(playerName, position, team, text){
 
 function renderCards(arr){
   let allCards = document.getElementById('allCards');
-  for (let i = 0; i <allNotesArr.length; i++){
+  for (let i = 0; i <arr.length; i++){
     let div = document.createElement('div');
     let h1 = document.createElement('h1');
     let h2 = document.createElement('h2');
@@ -72,8 +74,33 @@ function handleCreateNote(event){
   console.log(allNotesArr);
 }
 
+function handleFilter(event){
+  event.preventDefault();
+  let team = event.target.filterTeam.value;
+  let position = event.target.filterPosition.value;
+  let outputArr = [];
+
+  for(let i = 0; i < allNotesArr.length; i++){
+    if ((allNotesArr[i].team === team) || allNotesArr[i].position === position){
+      outputArr.push(allNotesArr[i]);
+    }
+  }
+  clearAllCardsFromPage();
+  renderCards(outputArr);
+}
+
+function deleteAllNotes(event){
+  event.preventDefault();
+  console.log('inside delete all notes arr');
+  allNotesArr = getFromLocalStorage('allNotesArr');
+  allNotesArr = [];
+  clearAllCardsFromPage();
+  addToLocalStorage('allNotesArr', allNotesArr);
+}
 //event listeners
 createNoteForm.addEventListener('submit', handleCreateNote);
+filterForm.addEventListener('submit', handleFilter);
+deleteAllNotesButton.addEventListener('click', deleteAllNotes);
 
 //proof of lifes///
 // new CreateNote('Tom Brady', 'QB', 'NE', 'He should be drafted high');
