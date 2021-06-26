@@ -5,6 +5,7 @@ let allNotesArr = [];
 let createNoteForm = document.getElementById('create-note-form');
 let filterForm = document.getElementById('filterform');
 let deleteAllNotesButton = document.getElementById('deleteAllNotes');
+
 //constructor functions
 
 function CreateNote(playerName, position, team, text){
@@ -32,18 +33,26 @@ function renderCards(arr){
     let h2 = document.createElement('h2');
     let h3 = document.createElement('h3');
     let p = document.createElement('p');
+    let img = document.createElement('img');
   
-    div.className = 'card'; 
+    div.className = 'card';
+    div.id = arr[i].playerName; 
+
     allCards.appendChild(div);
     h1.textContent = arr[i].playerName;
     h2.textContent = arr[i].position.toUpperCase();
     h3.textContent = arr[i].team.toUpperCase();
     p.textContent = arr[i].text;
+    img.src = '../img/edit-pencil.png';
+    img.class = 'edit-note';
+    img.id = arr[i].playerName;
+    img.addEventListener('click', handleEditNote);
   
     div.appendChild(h1);
     div.appendChild(h2);
     div.appendChild(h3);
     div.appendChild(p);
+    div.appendChild(img);
   }
 
 }
@@ -87,6 +96,16 @@ function handleFilter(event){
   }
   clearAllCardsFromPage();
   renderCards(outputArr);
+}
+
+function handleEditNote(event){
+  event.preventDefault();
+  let main = document.querySelector('main');
+  let editCard = document.createElement('div');
+  editCard.className = 'editCard';
+  editCard.id = event.currentTarget.id;
+  
+  main.appendChild(editCard);
 }
 
 function deleteAllNotes(event){
