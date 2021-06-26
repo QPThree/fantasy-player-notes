@@ -45,7 +45,7 @@ function renderCards(arr){
     h2.textContent = arr[i].position.toUpperCase();
     h3.textContent = arr[i].team.toUpperCase();
     p.textContent = arr[i].text;
-    img.src = '../img/edit-pencil.png';
+    img.src = 'img/edit-pencil.png';
     img.class = 'edit-note';
     img.id = arr[i].playerName;
     img.addEventListener('click', handleEditNote);
