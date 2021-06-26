@@ -21,7 +21,17 @@ function CreateNote(playerName, position, team, text){
 
 //functions
 
+function renderCard(obj){
+  console.log('card rendered');
+  let allCards = document.getElementsByClassName('allCards');
+  let div = document.createElement('div');
+  let h1 = document.createElement('h1');
+  let h2 = document.createElement('h2');
+  div.className = 'card'; 
 
+  h1.textContent = obj.name;
+  h2.textContent = obj.position;
+}
 
 //event handlers
 function handleCreateNote(event){
@@ -30,7 +40,7 @@ function handleCreateNote(event){
   let position = event.target.createPosition.value;
   let team = event.target.createTeam.value;
   let text = event.target.createText.value;
-  new CreateNote(playerName, position, team, text);
+  renderCard(new CreateNote(playerName, position, team, text));
 }
 
 //event listeners

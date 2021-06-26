@@ -23,6 +23,9 @@ section{
   padding: 2%;
 }
 
+.allCards{
+  height: 100%;
+}
 .card{
   background-color: white;
   text-align: center;
