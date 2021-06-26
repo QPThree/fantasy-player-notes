@@ -1,6 +1,8 @@
 'use strict';
 //globals variables
 let allNotesArr = [];
+let positionsArr = ['QB', 'RB', 'WR', 'TE'];
+let teamsArr = ['ARI', 'ATL', 'BUF', 'BAL', 'CAR', 'CIN', 'CLE', 'CHI', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'KC', 'LAC', 'LAR', 'JAC', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'SF', 'SEA', 'PIT', 'TB', 'TEN', 'WAS'];
 //footholds into DOM
 let createNoteForm = document.getElementById('create-note-form');
 let filterForm = document.getElementById('filterform');
@@ -104,7 +106,65 @@ function handleEditNote(event){
   let editCard = document.createElement('div');
   editCard.className = 'editCard';
   editCard.id = event.currentTarget.id;
-  
+
+  let form = document.createElement('form');
+  let fieldset = document.createElement('fieldset');
+  let legend = document.createElement('legend');
+  let label1 = document.createElement('label');// player name label
+  let label2 = document.createElement('label'); // position label
+  let label3 = document.createElement('label'); //team label
+  let label4 = document.createElement('label'); //note text label
+  let input = document.createElement('input');
+  let select2 = document.createElement('select'); //for position
+  let select3 = document.createElement('select'); //for teams
+  let textArea = document.createElement('textarea');
+
+  //for loop creates all position options in edit card form
+  for (let i = 0; i < positionsArr.length; i++){
+    let pos = document.createElement('option');
+    pos.textContent = positionsArr[i];
+    let value = positionsArr[i].toLowerCase();
+    pos.value = value;
+    select2.appendChild(pos);
+  }
+  //for loop creates all team options in edit card form
+  for (let i = 0; i < teamsArr.length; i++){
+    let team = document.createElement('option');
+    team.textContent = teamsArr[i];
+    let value = teamsArr[i].toLowerCase();
+    team.value = value;
+    select3.appendChild(team);
+  }
+
+
+  legend.textContent = 'Edit Player Note';
+  label1.textContent = 'Player Name:';
+  label2.textContent = 'Position';
+  label3.textContent = 'Team';
+  label4.textContent = 'Edit Note';
+
+  label2.appendChild(select2);
+  label3.appendChild(select3);
+  label4.appendChild(textArea);
+
+  input.type = 'text';
+  input.id = 'editPlayerName';
+  input.name = 'editPlayerName';
+
+  textArea.rows = '4';
+  textArea.cols = '25';
+
+  form.appendChild(fieldset);
+  fieldset.appendChild(legend);
+  fieldset.appendChild(label1);
+  fieldset.appendChild(label2);
+  fieldset.appendChild(label3);
+  fieldset.appendChild(label4);
+  label1.appendChild(input);
+  editCard.appendChild(form);
+
+
+
   main.appendChild(editCard);
 }
 
