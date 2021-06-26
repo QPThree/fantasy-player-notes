@@ -23,7 +23,7 @@ section{
   padding: 2%;
 }
 
-.allCards{
+#allCards{
   height: 100%;
 }
 .card{
