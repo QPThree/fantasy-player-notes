@@ -1,0 +1,38 @@
+body{
+  width: 100%;
+  height: 100vh;
+  background-color: bisque;
+}
+
+header{
+  width: 100%;
+  height: 15%;
+  background-color: aqua;
+}
+main{
+  background-color: blue;
+  height: 100%;
+}
+.filters{
+  background-color: brown;
+  text-align: center;
+  height: 10%;
+}
+section{
+  height: 100%;
+  padding: 2%;
+}
+
+.card{
+  background-color: white;
+  text-align: center;
+  width: 33%;
+  height: 33%;
+  margin: auto;
+}
+#create-note{
+  background-color: grey;
+  position: fixed;
+  right: 70%;
+  width: 25%;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>fantasy-player-notes</title>
+
+</head>
+<body>
+  <header>
+    <h1>Header Here</h1>
+  </header>
+  <main>
+    <div class="filters">
+      <!-- Filter by team or position -->
+      <form>
+        <fieldset>
+          <legend>Filter Player Notes</legend>
+          <label>Team
+            <select name='team' id="team">
+              <option style="display:none"></option>
+              <option value='ari'>ARI</option>
+              <option value='atl'>ATL</option>
+              <option value='buf'>BUF</option>
+            </select>
+          </label>
+          <label>Position
+            <select name='position' id="position">
+              <option style="display:none"></option>
+              <option value='qb'>QB</option>
+              <option value='rb'>RB</option>
+              <option value='wr'>WR</option>
+              <option value='te'>TE</option>
+            </select>
+          </label>
+          <br>
+          <button type="submit">Filter</button>
+        </fieldset>
+      </form>
+    </div>
+    <section>
+      <aside class = "card" id = "create-note">
+        <form>
+          <fieldset>
+            <legend>Create New Note</legend>
+            <label>Player Name:
+              <input type="text" name='player-name' id="player-name">
+            </label>
+            <br>
+            <label>Position
+              <select name='position' id="position">
+                <option style="display:none"></option>
+                <option value='qb'>QB</option>
+                <option value='rb'>RB</option>
+                <option value='wr'>WR</option>
+                <option value='te'>TE</option>
+              </select>
+            </label>
+            <br>
+            <label>Team
+              <select name='team' id="team">
+                <option style="display:none"></option>
+                <option value='ari'>ARI</option>
+                <option value='atl'>ATL</option>
+                <option value='buf'>BUF</option>
+              </select>
+            </label>
+            <br>
+            <label>Note Text:
+              <input type="textarea" name='player-name' id="player-name">
+            </label>
+            <button type="submit">Create</button>
+          </fieldset>
+        </form>
+      </aside>
+      <div class="card">Example of one card here</div>
+    </section>
+  </main>
+</body>
+<script src="/js/app.js"></script>
+</html>
