@@ -1,6 +1,6 @@
 'use strict';
 //globals variables
-const allNotes = [];
+let allNotesArr = [];
 //footholds into DOM
 let createNoteForm = document.getElementById('create-note-form');
 //constructor functions
@@ -11,8 +11,9 @@ function CreateNote(playerName, position, team, text){
   this.team = team;
   this.text = text;
 
-  allNotes.push(this);
-  addToLocalStorage('allNotes', allNotes);
+  allNotesArr.push(this);
+  addToLocalStorage('allNotesArr', allNotesArr);
+  console.log(playerName);
 }
 
 
@@ -21,31 +22,34 @@ function CreateNote(playerName, position, team, text){
 
 //functions
 
-function renderCard(obj){
-  console.log('card rendered');
+function renderCards(arr){
   let allCards = document.getElementById('allCards');
-  let div = document.createElement('div');
-  let h1 = document.createElement('h1');
-  let h2 = document.createElement('h2');
-  let h3 = document.createElement('h3');
-  let p = document.createElement('p');
-
-  div.className = 'card'; 
-  allCards.appendChild(div);
-  h1.textContent = obj.name;
-  h2.textContent = obj.position;
-  h3.textContent = obj.team;
-  p.textContent = obj.text;
-
-  div.appendChild(h1);
-  div.appendChild(h2);
-  div.appendChild(h3);
-  div.appendChild(p);
-
+  for (let i = 0; i <allNotesArr.length; i++){
+    let div = document.createElement('div');
+    let h1 = document.createElement('h1');
+    let h2 = document.createElement('h2');
+    let h3 = document.createElement('h3');
+    let p = document.createElement('p');
   
+    div.className = 'card'; 
+    allCards.appendChild(div);
+    h1.textContent = arr[i].playerName;
+    h2.textContent = arr[i].position;
+    h3.textContent = arr[i].team;
+    p.textContent = arr[i].text;
+  
+    div.appendChild(h1);
+    div.appendChild(h2);
+    div.appendChild(h3);
+    div.appendChild(p);
+  }
 
 }
 
+function clearAllCardsFromPage(){
+  let allCards = document.getElementById('allCards');
+  allCards.innerHTML = '';
+}
 function addToLocalStorage(key, item) {
   let stringifiedItem = JSON.stringify(item);
   localStorage.setItem(key, stringifiedItem);
@@ -62,8 +66,10 @@ function handleCreateNote(event){
   let position = event.target.createPosition.value;
   let team = event.target.createTeam.value;
   let text = event.target.createText.value;
-  renderCard(new CreateNote(playerName, position, team, text));
-  console.log(allNotes);
+  new CreateNote(playerName, position, team, text);
+  clearAllCardsFromPage();
+  renderCards(allNotesArr);
+  console.log(allNotesArr);
 }
 
 //event listeners
@@ -73,6 +79,7 @@ createNoteForm.addEventListener('submit', handleCreateNote);
 // new CreateNote('Tom Brady', 'QB', 'NE', 'He should be drafted high');
 //render on run
 
-if (getFromLocalStorage('allNotes')){
-  allNotes = getFromLocalStorage('allNotes');
+if (getFromLocalStorage('allNotesArr')){
+  allNotesArr = getFromLocalStorage('allNotesArr');
+  renderCards(allNotesArr);
 }
