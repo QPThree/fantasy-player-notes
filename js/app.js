@@ -34,8 +34,8 @@ function renderCards(arr){
     div.className = 'card'; 
     allCards.appendChild(div);
     h1.textContent = arr[i].playerName;
-    h2.textContent = arr[i].position;
-    h3.textContent = arr[i].team;
+    h2.textContent = arr[i].position.toUpperCase();
+    h3.textContent = arr[i].team.toUpperCase();
     p.textContent = arr[i].text;
   
     div.appendChild(h1);
