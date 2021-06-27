@@ -29,6 +29,7 @@ main{
 }
 .filters{
   background-color: #EDE7E3;
+  border: solid #16697A 3px;
   display: flex;
   box-shadow: 0px 15px 30px rgb(0 0 0 / 15%);
   text-align: center;
@@ -68,18 +69,24 @@ section{
 .card h1{
   color: #16697a;
   font-size: 1.6em;
+  font-family: 'Big Shoulders Stencil Display', cursive;
+  float: left;
 }
-.card h2{
-  color: #489fb5;
-  font-size: 1.2em;
-}
+
 .card h3{
   color: #16697a;
   font-size: 1.2em;
+  float: right;
+  
 }
 .card p{
   color: #16697a;
-  font-size: 1em;
+  font-size: 1.4em;
+  font-family: 'Teko', sans-serif;
+  margin-top: 15%;
+  overflow-y: scroll;
+  height: 40%;
+  width: 90%;
 }
 .card img{
   height: 8%;
@@ -88,10 +95,11 @@ section{
 }
 
 .card img:hover{
-  border: solid black 1px ;
+  border: solid #FFA62B 1px ;
 }
 #create-note{
   background-color: #ede7e3;
+  border: solid #16697A 3px;
   padding: 5px;
   position: fixed;
   right: 70%;
@@ -116,4 +124,9 @@ p{
   background-color: #16697a;
   bottom: 10%;
   left: 35%;
+}
+
+textarea{
+  overflow-y: scroll;
+  height: 50px;
 }

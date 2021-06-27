@@ -42,9 +42,9 @@ function renderCards(arr){
     div.id = arr[i].playerName; 
 
     allCards.appendChild(div);
-    h1.textContent = arr[i].playerName;
-    h2.textContent = arr[i].position.toUpperCase();
-    h3.textContent = arr[i].team.toUpperCase();
+    h1.textContent = `${arr[i].playerName}, ${arr[i].team.toUpperCase()}`;
+    // h2.textContent = arr[i].position.toUpperCase();
+    h3.textContent = arr[i].position.toUpperCase();
     p.textContent = arr[i].text;
     img.src = 'img/edit-pencil.png';
     img.class = 'edit-note';
@@ -125,7 +125,7 @@ function handleEditNote(event){
   let k;
 
   form.addEventListener('submit', handleEditNoteSubmission);
-
+  document.querySelector("textarea").setSelectionRange(0,0);
   //for loop creates all position options in edit card form
   for (let i = 0; i < positionsArr.length; i++){
     let pos = document.createElement('option');
