@@ -3,6 +3,7 @@
 let allNotesArr = [];
 let positionsArr = ['QB', 'RB', 'WR', 'TE'];
 let teamsArr = ['ARI', 'ATL', 'BUF', 'BAL', 'CAR', 'CIN', 'CLE', 'CHI', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'KC', 'LAC', 'LAR', 'JAC', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'SF', 'SEA', 'PIT', 'TB', 'TEN', 'WAS'];
+let noteEditedId;
 //footholds into DOM
 let createNoteForm = document.getElementById('create-note-form');
 let filterForm = document.getElementById('filterform');
@@ -108,6 +109,7 @@ function handleEditNote(event){
   editCard.id = event.currentTarget.id;
 
   let form = document.createElement('form');
+  form.id = 'editNoteForm';
   let fieldset = document.createElement('fieldset');
   let legend = document.createElement('legend');
   let label1 = document.createElement('label');// player name label
@@ -115,9 +117,14 @@ function handleEditNote(event){
   let label3 = document.createElement('label'); //team label
   let label4 = document.createElement('label'); //note text label
   let input = document.createElement('input');
+  input.value = editCard.id;
   let select2 = document.createElement('select'); //for position
   let select3 = document.createElement('select'); //for teams
   let textArea = document.createElement('textarea');
+  let button = document.createElement('button'); //used for submition
+
+
+  form.addEventListener('submit', handleEditNoteSubmission);
 
   //for loop creates all position options in edit card form
   for (let i = 0; i < positionsArr.length; i++){
@@ -142,6 +149,7 @@ function handleEditNote(event){
   label2.textContent = 'Position';
   label3.textContent = 'Team';
   label4.textContent = 'Edit Note';
+  button.textContent = 'Submit Edit';
 
   label2.appendChild(select2);
   label3.appendChild(select3);
@@ -151,6 +159,10 @@ function handleEditNote(event){
   input.id = 'editPlayerName';
   input.name = 'editPlayerName';
 
+  select2.id = 'editPosition';
+  select3.id = 'editTeam';
+
+  textArea.id = 'editText';
   textArea.rows = '4';
   textArea.cols = '25';
 
@@ -160,14 +172,37 @@ function handleEditNote(event){
   fieldset.appendChild(label2);
   fieldset.appendChild(label3);
   fieldset.appendChild(label4);
+  fieldset.appendChild(button);
   label1.appendChild(input);
   editCard.appendChild(form);
 
-
-
   main.appendChild(editCard);
+  noteEditedId = event.target.id;
+
 }
 
+function handleEditNoteSubmission(event){
+  event.preventDefault();
+  let playerName = event.target.editPlayerName.value;
+  let position = event.target.editPosition.value;
+  let team = event.target.editTeam.value;
+  let text = event.target.editText.value;
+  let k;
+
+  for (let i = 0; i < allNotesArr.length; i++){
+    if (allNotesArr[i].playerName = noteEditedId){
+      k = i;
+    }
+  }
+  allNotesArr[k].playerName = playerName;
+  allNotesArr[k].position = position;
+  allNotesArr[k].team = team;
+  allNotesArr[k].text = text;
+  let cardToRemove = document.getElementById(noteEditedId);
+  addToLocalStorage('allNotesArr', allNotesArr);
+  console.log(cardToRemove);
+  location.reload();
+}
 function deleteAllNotes(event){
   event.preventDefault();
   console.log('inside delete all notes arr');

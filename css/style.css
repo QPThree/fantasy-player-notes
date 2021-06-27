@@ -28,7 +28,7 @@ main{
   height: 100%;
 }
 .filters{
-  background-color: #fff;
+  background-color: #EDE7E3;
   display: flex;
   box-shadow: 0px 15px 30px rgb(0 0 0 / 15%);
   text-align: center;
@@ -56,7 +56,7 @@ section{
   height: 100%;
 }
 .card{
-  background-color: #ede7e3;
+  background-color: #fff;
   padding: 5px;
   text-align: center;
   width: 33%;
@@ -99,6 +99,11 @@ section{
 }
 fieldset{
   border: none;
+}
+
+p{
+  border: 1px solid black;
+  padding: 2%;
 }
 
 .editCard{
