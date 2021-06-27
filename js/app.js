@@ -122,7 +122,7 @@ function handleEditNote(event){
   let select3 = document.createElement('select'); //for teams
   let textArea = document.createElement('textarea');
   let button = document.createElement('button'); //used for submition
-
+  let k;
 
   form.addEventListener('submit', handleEditNoteSubmission);
 
@@ -142,7 +142,16 @@ function handleEditNote(event){
     team.value = value;
     select3.appendChild(team);
   }
-
+  
+  for (let i = 0; i < allNotesArr.length; i++){
+    if (allNotesArr[i].playerName === event.target.id){
+      k = i;
+    }
+  }
+  //prefills edit form with the notes current values
+  select2.value = allNotesArr[k].position;
+  select3.value = allNotesArr[k].team;
+  textArea.value = allNotesArr[k].text;
 
   legend.textContent = 'Edit Player Note';
   label1.textContent = 'Player Name:';
@@ -188,9 +197,10 @@ function handleEditNoteSubmission(event){
   let team = event.target.editTeam.value;
   let text = event.target.editText.value;
   let k;
+  console.log(`note edited id ${noteEditedId}`);
 
   for (let i = 0; i < allNotesArr.length; i++){
-    if (allNotesArr[i].playerName = noteEditedId){
+    if (allNotesArr[i].playerName === noteEditedId){
       k = i;
     }
   }
