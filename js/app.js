@@ -11,11 +11,12 @@ let deleteAllNotesButton = document.getElementById('deleteAllNotes');
 
 //constructor functions
 
-function CreateNote(playerName, position, team, text){
+function CreateNote(playerName, position, team, text, posRank){
   this.playerName = playerName;
   this.position = position;
   this.team = team;
   this.text = text;
+  this.posRank = posRank;
 
   allNotesArr.push(this);
   addToLocalStorage('allNotesArr', allNotesArr);
@@ -60,6 +61,18 @@ function renderCards(arr){
 
 }
 
+function renderPositionRankings(pos){
+  let rankingsCard = document.getElementById('position-rank-card');
+  let ol = document.createElement('ol');
+  
+  let array = createPositionArr(pos);
+  rankingsCard.appendChild(ol);
+  for (let i = 0; i < array.length; i++){
+    let li = document.createElement('li');
+    li.textContent = array[i].playerName;
+    ol.appendChild(li);
+  }
+}
 function clearAllCardsFromPage(){
   let allCards = document.getElementById('allCards');
   allCards.innerHTML = '';
@@ -221,6 +234,16 @@ function deleteAllNotes(event){
   clearAllCardsFromPage();
   addToLocalStorage('allNotesArr', allNotesArr);
 }
+
+function createPositionArr(pos){
+  let outputArr = [];
+  for (let i = 0; i < allNotesArr.length; i++){
+    if(allNotesArr[i].position === pos){
+      outputArr.push(allNotesArr[i]);
+    }
+  }
+  return outputArr;
+}
 //event listeners
 createNoteForm.addEventListener('submit', handleCreateNote);
 filterForm.addEventListener('submit', handleFilter);
@@ -234,3 +257,5 @@ if (getFromLocalStorage('allNotesArr')){
   allNotesArr = getFromLocalStorage('allNotesArr');
   renderCards(allNotesArr);
 }
+
+renderPositionRankings('te');

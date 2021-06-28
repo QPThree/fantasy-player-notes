@@ -17,9 +17,6 @@
       <h1 id='fantascribe'>Fantascribe</h1>
       <img src="img/clipboard.png" alt="clipboard">
     </div>
-
-  </header>
-  <main>
     <div class="filters">
       <!-- Filter by team or position -->
       <form id="filterform">
@@ -71,14 +68,18 @@
               <option value='te'>TE</option>
             </select>
           </label>
+          
           <button type="submit">Filter</button>
         </fieldset>
         <fieldset id='deleteAllNotesFieldset'>
-          <legend>Remove Notes</legend>
-          <button type = "submit" id="deleteAllNotes">Delete</button>
+          <legend></legend>
+          <button type = "submit" id="deleteAllNotes">Delete All</button>
         </fieldset>
       </form>
     </div>
+  </header>
+  <main>
+    
     <section>
       <aside class = "card" id = "create-note">
         <form id = 'create-note-form'>
@@ -136,6 +137,22 @@
               </select>
             </label>
             <br>
+            <label>Position Rank
+              <select name='positionRank' id="createPositionRank">
+                <option value=''></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </label>
+            <br>
             <label>Note Text:
               <textarea name='createText' id="createText" rows="4" cols="25"></textarea>
               <br>
@@ -147,8 +164,10 @@
       <div id='allCards'>
         <!-- <div class="card">Example of one card here1</div>
         <div class="card">Example of one card here2</div> -->
-
       </div>
+      <aside class = "card" id = "position-rank-card">
+        Position Rank Card Here
+      </aside>
     </section>
   </main>
 </body>
